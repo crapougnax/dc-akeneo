@@ -1,0 +1,19 @@
+web:
+  image: crapougnax/akeneo
+  ports:
+    - "80:80"
+  links:
+    - db:mysql
+  env_file:
+    - env
+  volumes:
+    - /src/web
+db:
+  image: mariadb:latest
+  volumes:
+    - /var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: akeneo
+    MYSQL_USER: akeneo
+    MYSQL_PASSWORD: akeneo
+    MYSQL_DATABASE: akeneo
